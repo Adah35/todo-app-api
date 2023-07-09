@@ -10,7 +10,7 @@ const { default: mongoose } = require('mongoose');
 const { getTodo, addTodo, updateTodo, deleteTodo } = require('./controller/todo');
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:3000',
+        origin: 'https://todo-app-emkn.onrender.com',
         methods: ['GET', 'POST', 'PATCH', 'DELETE'],
     }
 });
