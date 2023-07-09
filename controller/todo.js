@@ -5,9 +5,6 @@ const asyncHandler = require('express-async-handler')
 
 const getTodo = asyncHandler(async (socket) => {
     const todo = await Todo.find().lean()
-    if (!todo.length) {
-        return res.status(400).json({ message: 'No todo Found' })
-    }
     socket.emit('todos', todo)
 })
 
@@ -15,7 +12,7 @@ const addTodo = asyncHandler(async (io, data) => {
     const { title, completed } = data
     // confirm data
     if (!title) {
-        return io.emit('error', 'All fields are required')
+        return;
     }
 
     // check for duplicate
